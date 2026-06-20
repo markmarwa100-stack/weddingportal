@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ["php84", "php84Extensions.pdo_msql", "phpExtensions.mbstring", "php84Extensions.xml" ,"php84Extensions.curl","composer"]
+
+[phases.install]
+cmds = ["composer install --no-dev --optimize-autoloader --no-scripts"]
+
+[phases.build]
+cdms = ["php artisan config:cache", "php artisan route:cache"]
+
+[start]
+cdm = "php artisan serve --host=0.0.0. --port=$PORT"
